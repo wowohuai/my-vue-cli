@@ -22,14 +22,27 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /\.m?js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader'
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.(styl|css)$/i,
+        use: ['style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 2
+                }
+              },
+              'postcss-loader',
+              'stylus-loader'
+        ],
       }
-    }],
+    ]
   },
-
   plugins: [
     new HtmlWebpackPlugin({
       title: 'my-vue-cli',

@@ -2,7 +2,7 @@
 基于webpack构建自己的vue-cli工具
 
 ## vue-cli所提供的功能
-  1. ES6代码转ES5
+  1. ES6代码转ES5(IE9+)
   2. scss/sass/less/stylus  转css
   3. vue文件转js文件
   4. ...

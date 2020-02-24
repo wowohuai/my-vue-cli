@@ -1,0 +1,6 @@
+{
+  "presets": [["@babel/preset-env", {
+    // 按需引入polyfill
+    "useBuiltIns": "usage"
+  }]]
+}

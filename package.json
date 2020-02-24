@@ -5,5 +5,21 @@
   "main": "main.js",
   "author": "ashuai",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "serve": "webpack --config ./build/webpack.config.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs2": "^7.8.4",
+    "core-js": "2"
+  }
 }

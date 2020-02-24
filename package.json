@@ -1,0 +1,9 @@
+{
+  "name": "my-vue-cli",
+  "version": "1.0.0",
+  "description": "基于webpack4.0搭建自己的vue-cli工具",
+  "main": "main.js",
+  "author": "ashuai",
+  "license": "MIT",
+  "private": true
+}

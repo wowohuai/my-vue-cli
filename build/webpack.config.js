@@ -1,16 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-const {
-  CleanWebpackPlugin
-} = require('clean-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 
 const resolve = (dir) => path.resolve(__dirname, dir)
 
 module.exports = {
   resolve: {
     alias: {
-      '~': resolve('../src')
+      '~': resolve('../src'),
+      'components': resolve('../src/components')
     }
   },
   // 指定打包模式
@@ -30,24 +29,15 @@ module.exports = {
   },
   module: {
     rules: [{
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader'
         }
-      },
-      {
-        test: /\.styl$/i,
-        use: ['style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2
-            }
-          },
-          'postcss-loader',
-          'stylus-loader'
-        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -77,23 +67,7 @@ module.exports = {
       title: 'my-vue-cli',
       template: 'public/index.html'
     }),
-    new CleanWebpackPlugin({
-      // 打印信息
-      verbose: true
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  // source-map
-  devtool: 'eval-cheap-module-source-map',
-  devServer: {
-    contentBase: './dist',
-    // compress: true,
-    port: 9000,
-    publicPath: '/',
-    open: true,
-    // 开启热更新
-    hot: true,
-    // 不自动刷新浏览器
-    hotOnly: true
-  }
+    //将定义过的其它规则复制并应用到 .vue 文件里相应语言的块
+    new VueLoaderPlugin()
+  ]
 }

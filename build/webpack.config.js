@@ -1,15 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 
-const resolve = (dir) => path.resolve(__dirname, dir)
+const resolve = (dir) => path.resolve(__dirname, dir);
 
 module.exports = {
   resolve: {
     alias: {
       '~': resolve('../src'),
-      'components': resolve('../src/components')
+      'components': resolve('../src/components'),
+      vue$: 'vue/dist/vue.runtime.esm.js'
     }
   },
   // 指定打包模式
@@ -33,8 +34,19 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
+        test: /\.(js|vue)$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        options: {
+          emitError: true,
+          // community formatter
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
+      {
         test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader'
         }

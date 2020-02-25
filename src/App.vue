@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <Hello :msg='msg'/>
+    <Hello :msg="msg" />
   </div>
 </template>
 
 <script>
-import Hello from 'components/hello.vue'
+import Hello from '~/components/hello.vue';
+
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     Hello
   },
-  data () {
+  data() {
     return {
       msg: 'hello world'
     }

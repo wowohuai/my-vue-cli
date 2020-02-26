@@ -13,8 +13,6 @@ module.exports = {
       vue$: 'vue/dist/vue.runtime.esm.js'
     }
   },
-  // 指定打包模式
-  mode: 'development',
   entry: {
     // 配置入口文件
     main: path.resolve(__dirname, '../src/main.js')
@@ -81,5 +79,31 @@ module.exports = {
     }),
     //将定义过的其它规则复制并应用到 .vue 文件里相应语言的块
     new VueLoaderPlugin()
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      // chunks: 'all',
+      // minSize: 30000,
+      // maxSize: 0,
+      // minChunks: 1,
+      // maxAsyncRequests: 5,
+      // maxInitialRequests: 3,
+      // automaticNameDelimiter: '~',
+      // name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          chunks: 'initial',
+          name: 'vendors.js'
+        }
+        // },
+        // default: {
+        //   minChunks: 2,
+        //   priority: -20,
+        //   reuseExistingChunk: true
+        // }
+      }
+    }
+  }
 }

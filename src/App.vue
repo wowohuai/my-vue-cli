@@ -6,6 +6,7 @@
 
 <script>
 import Hello from '~/components/hello.vue';
+import getComponent from '~/util/index';
 
 export default {
   name: 'App',
@@ -14,7 +15,8 @@ export default {
   },
   data() {
     return {
-      msg: 'hello world'
+      msg: 'hello world',
+      hello: getComponent(),
     }
   }
 }

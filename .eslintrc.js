@@ -28,6 +28,7 @@ module.exports = {
   "rules": {
     "no-undef": "off",
     "semi": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "global-require": "off"
   }
 }

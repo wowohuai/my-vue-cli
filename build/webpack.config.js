@@ -10,6 +10,10 @@ module.exports = {
     alias: {
       '~': resolve('../src'),
       'components': resolve('../src/components'),
+      'pages': resolve('../src/pages'),
+      'assets': resolve('../src/assets'),
+      'styles': resolve('../src/assets/styles'),
+      'api': resolve('../src/api'),
       vue$: 'vue/dist/vue.runtime.esm.js'
     }
   },
@@ -75,7 +79,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'my-vue-cli',
-      template: 'public/index.html'
+      template: 'public/index.html',
+      favicon: 'public/favicon.ico'
     }),
     //将定义过的其它规则复制并应用到 .vue 文件里相应语言的块
     new VueLoaderPlugin()

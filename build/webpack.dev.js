@@ -9,7 +9,7 @@ module.exports = merge(baseConfig, {
   mode: 'development',
   module: {
     rules: [{
-      test: /\.styl(us)?$/i,
+      test: /\.(styl(us)|css)?$/i,
       use: ['vue-style-loader',
         {
           loader: 'css-loader',
@@ -39,6 +39,11 @@ module.exports = merge(baseConfig, {
     // 不自动刷新浏览器
     hotOnly: true,
     overlay: true,
-    quiet: true
+    quiet: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000'
+      }
+    }
   }
 })

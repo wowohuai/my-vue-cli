@@ -27,7 +27,6 @@
 
 <script>
 import BScroll from '@better-scroll/core';
-import { mapMutations } from 'vuex';
 import handleClickMixin from '~/common/mixins';
 
 export default {
@@ -70,7 +69,11 @@ export default {
             }
           })
         })
-        this.list = result
+        this.list = result;
+        // 重新计算content高度
+        this.$nextTick(() => {
+          this.scroll.refresh();
+        })
       }, 100)
     }
   },
@@ -80,15 +83,7 @@ export default {
         click: true // BetterScroll 默认会阻止浏览器的原生 click 事件
       });
     }, 20);
-  },
-  methods: {
-    handleCityClick(city) {
-      this.changeCity(city)
-      this.$router.push('/')
-      this.keyword = ''
-    },
-    ...mapMutations(['changeCity'])
-  },
+  }
 }
 </script>
 

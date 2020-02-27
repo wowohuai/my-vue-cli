@@ -54,6 +54,7 @@
     "axios": "^0.19.2",
     "border.css": "^0.10.0",
     "core-js": "2",
+    "fastclick": "^1.0.6",
     "lodash": "^4.17.15",
     "reset.css": "^2.0.2",
     "swiper": "^5.3.1",

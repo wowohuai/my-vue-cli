@@ -78,18 +78,24 @@ export default {
   },
   watch: {
     letter() {
-      // if (this.letter) {
-      //   const element = this.$refs[this.letter][0]
-      //   this.scroll.scrollToElement(element)
-      // }
+      if (this.letter) {
+        const element = this.$refs[this.letter][0];
+        this.scroll.scrollToElement(element);
+      }
+    },
+    cities() {
+      this.$nextTick(() => {
+        // 重新计算content高度
+        this.scroll.refresh();
+      })
     }
   },
   mounted() {
-    setTimeout(() => {
+    this.$nextTick(() => {
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: true // BetterScroll 默认会阻止浏览器的原生 click 事件
       });
-    }, 20);
+    });
   }
 }
 </script>
@@ -115,6 +121,7 @@ export default {
   left 0
   right 0
   bottom 0
+  height 100%
 
   .title
     line-height 0.54rem

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
+import FastClick from 'fastclick';
 import router from './router/router';
 import store from './store';
 import App from './App.vue';
@@ -8,7 +9,8 @@ import 'border.css';
 import 'styles/iconfont.css';
 import 'swiper/css/swiper.css'
 
-Vue.use(VueAwesomeSwiper)
+FastClick.attach(document.body);
+Vue.use(VueAwesomeSwiper);
 
 new Vue({
   store,

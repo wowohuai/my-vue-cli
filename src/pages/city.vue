@@ -7,13 +7,15 @@
       :hot="hotCities"
       :letter="letter"
     />
+    <city-alphabet :cities="cities" @change="change" />
   </div>
 </template>
 
 <script>
-import CityHeader from 'components/city/header.vue'
-import CitySearch from 'components/city/search.vue'
-import CityList from 'components/city/list.vue'
+import CityHeader from 'components/city/header.vue';
+import CitySearch from 'components/city/search.vue';
+import CityList from 'components/city/list.vue';
+import CityAlphabet from 'components/city/alphabet.vue';
 import { getCities } from 'api/home';
 import { ERR_OK } from 'api/config';
 
@@ -22,7 +24,8 @@ export default {
   components: {
     CityHeader,
     CitySearch,
-    CityList
+    CityList,
+    CityAlphabet
   },
   data() {
     return {
@@ -45,6 +48,9 @@ export default {
     },
     handleLetterChange(letter) {
       this.letter = letter
+    },
+    change(letter) {
+      this.letter = letter;
     }
   }
 }

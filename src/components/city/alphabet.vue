@@ -41,7 +41,6 @@ export default {
     }
   },
   updated() {
-    console.log(this.$refs[A][0]);
     this.startY = this.$refs[A][0].offsetTop
   },
   methods: {
@@ -84,11 +83,9 @@ export default {
   right 0
   bottom 0
   width 0.4rem
-  border yellow 1px solid
 
   .item
     line-height 0.4rem
     text-align center
     color $bgColor
-    border red 1px solid
 </style>

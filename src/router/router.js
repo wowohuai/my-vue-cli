@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from 'pages/home.vue'
-import City from 'pages/city.vue'
+
 
 Vue.use(Router)
 
@@ -9,10 +8,14 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: 'Home' */ 'pages/home.vue')
   }, {
     path: '/city',
     name: 'City',
-    component: City
+    component: () => import(/* webpackChunkName: 'City' */ 'pages/city.vue')
+  }, {
+    path: '/detail/:id',
+    name: 'Detail',
+    component: () => import(/* webpackChunkName: 'Detail' */ 'pages/detail.vue')
   }]
 })

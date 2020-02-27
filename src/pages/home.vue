@@ -9,11 +9,11 @@
 </template>
 
 <script type="text/ecmascript-6">
-import Header from 'components/home/header.vue';
-import HomeSwiper from 'components/home/swiper.vue';
-import HomeIcons from 'components/home/icons.vue';
-import HomeRecommend from 'components/home/recommend.vue';
-import HomeWeekend from 'components/home/weekend.vue';
+import Header from 'components/home/header';
+import HomeSwiper from 'components/home/swiper';
+import HomeIcons from 'components/home/icons';
+import HomeRecommend from 'components/home/recommend';
+import HomeWeekend from 'components/home/weekend';
 import { mapGetters } from 'vuex';
 import { getHome } from 'api/home';
 import { ERR_OK } from 'api/config';

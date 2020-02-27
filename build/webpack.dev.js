@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const baseConfig = require('./webpack.config');
 const path = require('path');
 
@@ -23,8 +22,7 @@ module.exports = merge(baseConfig, {
     }]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new FriendlyErrorsWebpackPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ],
   // source-map
   devtool: 'eval-cheap-module-source-map',

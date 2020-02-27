@@ -1,7 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const {
+  CleanWebpackPlugin
+} = require('clean-webpack-plugin');
 
 const resolve = (dir) => path.resolve(__dirname, dir);
 
@@ -15,7 +18,9 @@ module.exports = {
       'styles': resolve('../src/assets/styles'),
       'api': resolve('../src/api'),
       vue$: 'vue/dist/vue.runtime.esm.js'
-    }
+    },
+    // 在import时可以不用加扩展名
+    extensions: [".js", ".vue", ".json", ".css"]
   },
   entry: {
     // 配置入口文件
@@ -82,12 +87,17 @@ module.exports = {
       template: 'public/index.html',
       favicon: 'public/favicon.ico'
     }),
+    new CleanWebpackPlugin({
+      // 打印信息
+      verbose: true
+    }),
     //将定义过的其它规则复制并应用到 .vue 文件里相应语言的块
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new FriendlyErrorsWebpackPlugin()
   ],
   optimization: {
     splitChunks: {
-      // chunks: 'all',
+      chunks: 'all',
       // minSize: 30000,
       // maxSize: 0,
       // minChunks: 1,

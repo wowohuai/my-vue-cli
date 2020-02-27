@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="headers">
     <div class="header-left">
       <div class="iconfont back-icon">
         &#xe624;
@@ -32,7 +32,7 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
 
-.header
+.headers
   display flex
   line-height $headerHeight
   background $bgColor

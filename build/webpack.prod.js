@@ -1,12 +1,10 @@
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config');
-const {
-  CleanWebpackPlugin
-} = require('clean-webpack-plugin');
+
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(baseConfig, {
 
@@ -15,7 +13,7 @@ module.exports = merge(baseConfig, {
 
   module: {
     rules: [{
-      test: /\.styl(us)?$/i,
+      test: /\.(styl(us)|css)?$/i,
       use: [MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
@@ -29,13 +27,13 @@ module.exports = merge(baseConfig, {
     }, ]
   },
   plugins: [
-    new CleanWebpackPlugin({
-      // 打印信息
-      verbose: true
-    }),
+
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css'
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
     })
   ],
   // source-map
